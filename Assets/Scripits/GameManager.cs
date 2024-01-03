@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static Action onGameStarted;
+    public Transform gameCameraPos;
+    
     private bool isGameStarted;
     private float currentTimeScale;
     private int score;
@@ -50,6 +53,8 @@ public class GameManager : MonoBehaviour
         isGameStarted = true;
         onGameStarted?.Invoke();
         Time.timeScale = 1f;
+        Camera.main.transform.DORotateQuaternion(gameCameraPos.rotation,2f);
+        Camera.main.transform.DOMove(gameCameraPos.position, 2f);
         Debug.Log("Level" + level);
     }
     public void AddPrize(int prize)

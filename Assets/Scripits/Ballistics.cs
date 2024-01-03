@@ -59,7 +59,7 @@ public class Ballistics : MonoBehaviour
     }
     public void Shot()
     {
-        newBullet.GetComponent<Banana>().isCanRotate = true;
+        newBullet.GetComponent<Banana>().isCanRotate = false;
         Vector3 fromTo = TargetTransform.position - transform.position;
         Vector3 fromToXZ = new Vector3(fromTo.x, 0f, fromTo.z);
 

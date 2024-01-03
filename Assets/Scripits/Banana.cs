@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Banana : MonoBehaviour
 {
-    public bool isCanRotate;
+    public bool isCanRotate=true;
     public bool isCanInteract=true;
     private void OnTriggerEnter(Collider other)
     {
