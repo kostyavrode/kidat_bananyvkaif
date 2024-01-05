@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale=1;
     }
     public void ShowScore(string score)
     {
@@ -48,6 +49,11 @@ public class UIManager : MonoBehaviour
     public void ShowLosePanel()
     {
         losePanel.SetActive(true);
+        inGamePanel.SetActive(false);
+    }
+    public void ShowWinPanel()
+    {
+        winPanel.SetActive(true);
         inGamePanel.SetActive(false);
     }
     public void ShowBestScore(string bestScore)

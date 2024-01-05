@@ -73,18 +73,24 @@ public class GameManager : MonoBehaviour
     public void UnPauseGame()
     {
         isGameStarted = true;
-        Time.timeScale = currentTimeScale;
+        Time.timeScale = 1;
+
     }
     public void EndGame()
     {
         isGameStarted = false;
         CheckBestScore();
-        UIManager.instance.ShowLosePanel();
+        
         if (score>15)
         {
             level += 1;
             PlayerPrefs.SetInt("Level", level);
             PlayerPrefs.Save();
+            UIManager.instance.ShowWinPanel();
+        }
+        else
+        {
+            UIManager.instance.ShowLosePanel();
         }
     }
     private void CheckBestScore()

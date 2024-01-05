@@ -6,6 +6,17 @@ public class Banana : MonoBehaviour
 {
     public bool isCanRotate=true;
     public bool isCanInteract=true;
+    public GameObject fire;
+    private void Awake()
+    {
+      if (PlayerPrefs.HasKey("Fire"))
+        {
+            if (PlayerPrefs.GetInt("Fire")==1)
+            {
+                fire.SetActive(true);
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Target" && isCanInteract)
