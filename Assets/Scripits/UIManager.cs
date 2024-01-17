@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject inGamePanel;
     [SerializeField] private GameObject winPanel;
+    public UniWebView uniWebView;
     private void Awake()
     {
         instance = this;
@@ -62,6 +63,11 @@ public class UIManager : MonoBehaviour
     }
     public void ShowPrivacy(string url)
     {
-
+        var webviewObject = new GameObject("UniWebview");
+        uniWebView = webviewObject.AddComponent<UniWebView>();
+        uniWebView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+        uniWebView.SetShowToolbar(true, false, true, true);
+        uniWebView.Load(url);
+        uniWebView.Show();
     }
 }
