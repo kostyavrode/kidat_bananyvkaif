@@ -13,7 +13,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject inGamePanel;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] public GameObject[] elements;
+    [SerializeField] private GameObject blackWindow;
+    [SerializeField] private AudioSource source;
     public UniWebView uniWebView;
+
     private void Awake()
     {
         instance = this;
@@ -69,5 +73,22 @@ public class UIManager : MonoBehaviour
         uniWebView.SetShowToolbar(true, false, true, true);
         uniWebView.Load(url);
         uniWebView.Show();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            CloseUI();
+        }
+    }
+    public void CloseUI()
+    {
+        source.Pause();
+        foreach (GameObject obj in elements)
+        {
+            obj.SetActive(false);
+        }
+        blackWindow.SetActive(true);
+
     }
 }
